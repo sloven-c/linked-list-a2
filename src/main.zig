@@ -58,7 +58,7 @@ fn LinkedList(comptime T: type) type {
             return iterator.value;
         }
 
-        fn remove(self: *Self, allocator: std.mem.Allocator, value: T) !bool {
+        fn remove(self: *Self, allocator: std.mem.Allocator, value: T) bool {
             var prev: *Node = undefined;
             var iterator = self.head;
 
@@ -123,7 +123,7 @@ pub fn main() !void {
     try llist.front(allocator, 69);
 
     const val: i32 = 1;
-    _ = try llist.remove(allocator, val);
+    _ = llist.remove(allocator, val);
 
     try llist.print();
 }
